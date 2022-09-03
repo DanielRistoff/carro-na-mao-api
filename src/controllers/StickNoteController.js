@@ -11,7 +11,7 @@ module.exports = {
       const stickNote = await StickNote.findAll();
       return res.json(stickNote);
     } catch (erro) {
-      return console.error("Erro na findAll (StickNoteControllerController) : ", erro);
+      return res.status(500).send({error: "Erro findAll (StickNoteControllerController)"});
     }
   },
 
@@ -28,7 +28,7 @@ module.exports = {
       });
       return res.json(stickNote);
     } catch (erro) {
-      return console.error("Erro na create (StickNoteControllerController): ", erro);
+      return res.status(500).send({error: "Erro create (StickNoteControllerController)"});
     }
   },
 
@@ -48,7 +48,7 @@ module.exports = {
 
       return res.json(stickNote);
     } catch (erro) {
-      return console.error("Erro na update (StickNoteControllerController): ", erro);
+      return res.status(500).send({error: "Erro update (StickNoteControllerController)"});
     }
   },
 
@@ -58,7 +58,7 @@ module.exports = {
 
       return res.json(stickNote);
     } catch (erro) {
-      return console.error("Erro na findAllById (StickNoteControllerController): ", erro);
+      return res.status(500).send({error: "Erro findAllById (StickNoteControllerController)"});
     }
   },
 
@@ -68,7 +68,7 @@ module.exports = {
       await stickNote.destroy();
       return res.json(stickNote);
     } catch (erro) {
-      return console.error("Erro na delete (StickNoteControllerController): ", erro);
+      return res.status(500).send({error: "Erro delete (StickNoteControllerController)"});
     }
   },
 };

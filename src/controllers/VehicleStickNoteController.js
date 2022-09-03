@@ -11,7 +11,7 @@ module.exports = {
       const vehicleStickNote = await VehicleStickNote.findAll();
       return res.json(vehicleStickNote);
     } catch (erro) {
-      return console.error("Erro na findAll (VehicleStickNoteController) : ", erro);
+      return res.status(500).send({error: "Erro findAll (VehicleStickNoteController)"});
     }
   },
 
@@ -23,7 +23,7 @@ module.exports = {
       });
       return res.json(vehicleStickNote);
     } catch (erro) {
-      return console.error("Erro na create (VehicleStickNoteController): ", erro);
+      return res.status(500).send({error: "Erro create (VehicleStickNoteController)"});
     }
   },
 
@@ -38,7 +38,7 @@ module.exports = {
 
       return res.json(vehicleStickNote);
     } catch (erro) {
-      return console.error("Erro na update (VehicleStickNoteController): ", erro);
+      return res.status(500).send({error: "Erro update (VehicleStickNoteController)"});
     }
   },
 
@@ -48,7 +48,7 @@ module.exports = {
 
       return res.json(vehicleStickNote);
     } catch (erro) {
-      return console.error("Erro na findAllById (VehicleStickNoteController): ", erro);
+      return res.status(500).send({error: "Erro findAllById (VehicleStickNoteController)"});
     }
   },
 
@@ -58,7 +58,7 @@ module.exports = {
       await vehicleStickNote.destroy();
       return res.json(vehicleStickNote);
     } catch (erro) {
-      return console.error("Erro na delete (VehicleStickNoteController): ", erro);
+      return res.status(500).send({error: "Erro delete (VehicleStickNoteController)"});
     }
   },
 };

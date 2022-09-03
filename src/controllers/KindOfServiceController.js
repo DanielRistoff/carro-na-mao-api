@@ -11,7 +11,7 @@ module.exports = {
       const kindOfService = await KindOfService.findAll();
       return res.json(kindOfService);
     } catch (erro) {
-      return console.error("Erro na findAll (KindOfServiceController) : ", erro);
+      return res.status(500).send({error: "Erro findAll (KindOfServiceController)"});
     }
   },
 
@@ -22,7 +22,7 @@ module.exports = {
       });
       return res.json(kindOfService);
     } catch (erro) {
-      return console.error("Erro na create (KindOfServiceController): ", erro);
+      return res.status(500).send({error: "Erro create (KindOfServiceController)"});
     }
   },
 
@@ -36,7 +36,7 @@ module.exports = {
 
       return res.json(kindOfService);
     } catch (erro) {
-      return console.error("Erro na update (KindOfServiceController): ", erro);
+      return res.status(500).send({error: "Erro update (KindOfServiceController)"});
     }
   },
 
@@ -46,7 +46,7 @@ module.exports = {
 
       return res.json(kindOfService);
     } catch (erro) {
-      return console.error("Erro na findAllById (KindOfServiceController): ", erro);
+      return res.status(500).send({error: "Erro findAllById (KindOfServiceController)"});
     }
   },
 
@@ -56,7 +56,7 @@ module.exports = {
       await kindOfService.destroy();
       return res.json(kindOfService);
     } catch (erro) {
-      return console.error("Erro na delete (KindOfServiceController): ", erro);
+      return res.status(500).send({error: "Erro delete (KindOfServiceController)"});
     }
   },
 };

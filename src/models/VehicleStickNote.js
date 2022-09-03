@@ -4,7 +4,7 @@ const shema = "";
 
 class VehicleStickNote extends sequelize.Model {}
 
-VehicleStickNote.init(
+  const VehicleStickNote = database.define("vehicle_stick_note", 
   {
     id: {
       type: sequelize.INTEGER,
@@ -22,9 +22,9 @@ VehicleStickNote.init(
     },
   },
   {
-    sequelize: database,
-    modelName: "vehicle_stick_note",
-    shema,
+    freezeTableName: true,
+    createdAt: false,
+    updatedAt: false,
   }
 );
 

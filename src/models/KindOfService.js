@@ -4,7 +4,7 @@ const shema = "";
 
 class KindOfService extends sequelize.Model {}
 
-KindOfService.init(
+  const KindOfService = database.define("kind_of_service", 
   {
     id: {
       type: sequelize.INTEGER,
@@ -18,9 +18,9 @@ KindOfService.init(
     },
   },
   {
-    sequelize: database,
-    modelName: "kind_of_service",
-    shema,
+    freezeTableName: true,
+    createdAt: false,
+    updatedAt: false,
   }
 );
 

@@ -11,7 +11,7 @@ module.exports = {
       const vehicle = await Vehicle.findAll();
       return res.json(vehicle);
     } catch (erro) {
-      return console.error("Erro na findAll (VehicleController) : ", erro);
+      return res.status(500).send({error: "Erro findAll (VehicleController)"});
     }
   },
 
@@ -25,7 +25,7 @@ module.exports = {
       });
       return res.json(vehicle);
     } catch (erro) {
-      return console.error("Erro na create (VehicleController): ", erro);
+      return res.status(500).send({error: "Erro create (VehicleController)"});
     }
   },
 
@@ -42,7 +42,7 @@ module.exports = {
 
       return res.json(vehicle);
     } catch (erro) {
-      return console.error("Erro na update (VehicleController): ", erro);
+      return res.status(500).send({error: "Erro update (VehicleController)"});
     }
   },
 
@@ -52,7 +52,7 @@ module.exports = {
 
       return res.json(vehicle);
     } catch (erro) {
-      return console.error("Erro na findAllById (VehicleController): ", erro);
+      return res.status(500).send({error: "Erro findAllById (VehicleController)"});
     }
   },
 
@@ -62,7 +62,7 @@ module.exports = {
       await vehicle.destroy();
       return res.json(vehicle);
     } catch (erro) {
-      return console.error("Erro na delete (VehicleController): ", erro);
+      return res.status(500).send({error: "Erro delete (VehicleController)"});
     }
   },
 };

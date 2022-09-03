@@ -5,7 +5,7 @@ const shema = "";
 
 class StickNote extends sequelize.Model {}
 
-StickNote.init(
+  const StickNote = database.define("stick_note", 
   {
     id: {
       type: sequelize.INTEGER,
@@ -43,9 +43,9 @@ StickNote.init(
     },
   },
   {
-    sequelize: database,
-    modelName: "stick_note",
-    shema,
+    freezeTableName: true,
+    createdAt: false,
+    updatedAt: false,
   }
 );
 
