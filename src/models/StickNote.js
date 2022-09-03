@@ -1,11 +1,8 @@
 const sequelize = require("sequelize");
 const database = require("../db");
 const KindOfService = require("./KindOfService");
-const shema = "";
 
-class StickNote extends sequelize.Model {}
-
-  const StickNote = database.define("stick_note", 
+const StickNote = database.define("stick_note", 
   {
     id: {
       type: sequelize.INTEGER,
@@ -27,7 +24,7 @@ class StickNote extends sequelize.Model {}
     },
     note: {
       type: sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     status: {
       type: sequelize.STRING,
@@ -39,7 +36,7 @@ class StickNote extends sequelize.Model {}
     },
     update: {
       type: sequelize.DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {

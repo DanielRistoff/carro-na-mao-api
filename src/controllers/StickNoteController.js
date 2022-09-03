@@ -1,4 +1,5 @@
 const StickNote = require("../models/StickNote");
+const validations = require("../util/Validations");
 
 module.exports = {
   async findAll(req, res) {
@@ -21,10 +22,10 @@ module.exports = {
         date: req.body.date,
         hour: req.body.hour,
         kind_of_service_id: req.body.kindOfService,
-        note: req.body.note,
+        note: validations.validarValores(req.body.note),
         status: req.body.status,
         created: req.body.created,
-        update: req.body.update,
+        update: validations.validarValores(req.body.update),
       });
       return res.json(stickNote);
     } catch (erro) {
@@ -38,11 +39,11 @@ module.exports = {
       if (stickNote) {
         (stickNote.date = req.body.date),
           (stickNote.hour = req.body.hour),
-          (stickNote.kind_of_service_id = req.body.kind_of_service_id),
-          (stickNote.note = req.body.note),
+          (stickNote.kind_of_service_id = req.body.kindOfService),
+          (stickNote.note = validations.validarValores(req.body.note)),
           (stickNote.status = req.body.status),
           (stickNote.created = req.body.created),
-          (stickNote.update = req.body.update),
+          (stickNote.update = validations.validarValores(req.body.update)),
         await stickNote.save();
       }
 

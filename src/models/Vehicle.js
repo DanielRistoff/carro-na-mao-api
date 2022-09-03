@@ -1,10 +1,8 @@
 const sequelize = require("sequelize");
 const database = require("../db");
-const shema = "";
+const BrandModelYear = require("./BrandModelYear");
 
-class Vehicle extends sequelize.Model {}
-
-  const Vehicle = database.define("vehicle", 
+const Vehicle = database.define("vehicle", 
   {
     id: {
       type: sequelize.INTEGER,
@@ -22,11 +20,11 @@ class Vehicle extends sequelize.Model {}
     },
     vin: {
       type: sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     brand_model_year_id: {
-      type: sequelize.INTEGER,
-      allowNull: false,
+      type: BrandModelYear,
+      allowNull: true,
     }
   },
   {

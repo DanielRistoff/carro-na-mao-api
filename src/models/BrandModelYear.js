@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 const database = require("../db");
-const shema = "";
 
 const BrandModelYear = database.define("brand_model_year", 
   {

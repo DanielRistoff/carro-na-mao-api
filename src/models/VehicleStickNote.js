@@ -2,9 +2,7 @@ const sequelize = require("sequelize");
 const database = require("../db");
 const shema = "";
 
-class VehicleStickNote extends sequelize.Model {}
-
-  const VehicleStickNote = database.define("vehicle_stick_note", 
+const VehicleStickNote = database.define("vehicle_stick_note", 
   {
     id: {
       type: sequelize.INTEGER,

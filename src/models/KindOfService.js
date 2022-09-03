@@ -1,10 +1,7 @@
 const sequelize = require("sequelize");
 const database = require("../db");
-const shema = "";
 
-class KindOfService extends sequelize.Model {}
-
-  const KindOfService = database.define("kind_of_service", 
+const KindOfService = database.define("kind_of_service", 
   {
     id: {
       type: sequelize.INTEGER,

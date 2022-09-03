@@ -2,8 +2,8 @@ const express = require("express");
 const controllerBrandModelYear = require("./controllers/BrandModelYearController");
 const controllerKindOfService = require("./controllers/KindOfServiceController");
 const controllerStickNote = require("./controllers/StickNoteController");
-const controllerVehicle= require("./controllers/VehicleController");
-const controllerVehicleStickNote= require("./controllers/VehicleStickNoteController");
+const controllerVehicle = require("./controllers/VehicleController");
+const controllerVehicleStickNote = require("./controllers/VehicleStickNoteController");
 
 const routes = express.Router();
 
