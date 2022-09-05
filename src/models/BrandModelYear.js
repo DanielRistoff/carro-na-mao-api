@@ -15,7 +15,7 @@ const BrandModelYear = database.define("brand_model_year",
       validator: {
         notNull: true,
         isInt: true,
-      }
+      },
     },
     year: {
       type: Sequelize.STRING,

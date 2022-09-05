@@ -1,5 +1,8 @@
+const { Op } = require("sequelize");
 const StickNote = require("../models/StickNote");
 const validations = require("../util/Validations");
+const controllerKindOfService = require("../controllers/KindOfServiceController");
+const KindOfService = require("../models/KindOfService");
 
 module.exports = {
   async findAll(req, res) {
@@ -9,10 +12,27 @@ module.exports = {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     try {
-      const stickNote = await StickNote.findAll();
-      return res.json(stickNote);
+      const stickNotes = await StickNote.findAll({include: [{
+        attributes: ['id', 'description'],
+        model: KindOfService
+      }]});
+      return res.json(stickNotes);
     } catch (erro) {
       return res.status(500).send({error: "Erro findAll (StickNoteControllerController)"});
+    }
+  },
+
+  async findAllByStatus(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    try {
+      const stickNote = await StickNote.findAll({ where: {status: { [Op.like]: `%${req.params.status}` } }});
+      return res.json(stickNote);
+    } catch (erro) {
+      return res.status(500).send({error: "Erro findAllByStatus (StickNoteControllerController)"});
     }
   },
 

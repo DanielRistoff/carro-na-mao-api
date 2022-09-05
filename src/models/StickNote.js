@@ -19,7 +19,7 @@ const StickNote = database.define("stick_note",
       allowNull: false,
     },
     kind_of_service_id: {
-      type: KindOfService,
+      type: sequelize.INTEGER,
       allowNull: false,
     },
     note: {
@@ -27,7 +27,7 @@ const StickNote = database.define("stick_note",
       allowNull: true,
     },
     status: {
-      type: sequelize.STRING,
+      type: sequelize.INTEGER,
       allowNull: false,
     },
     created: {
@@ -43,7 +43,12 @@ const StickNote = database.define("stick_note",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  }
+  },
 );
+
+StickNote.belongsTo(KindOfService, {
+  foreignKey: 'kind_of_service_id',
+  allowNull: false
+})
 
 module.exports = StickNote;

@@ -8,7 +8,9 @@ module.exports = {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     try {
-      const kindOfService = await KindOfService.findAll();
+      const kindOfService = await KindOfService.findAll({
+        include: { association: 'addresses' }
+      });
       return res.json(kindOfService);
     } catch (erro) {
       return res.status(500).send({error: "Erro findAll (KindOfServiceController)"});

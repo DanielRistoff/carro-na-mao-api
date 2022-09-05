@@ -31,6 +31,8 @@ routes.delete("/v1/public/kind-of-servicer/:id", controllerKindOfService.delete)
 
 routes.get("/v1/public/stick-note", controllerStickNote.findAll);
 
+routes.get("/v1/public/stick-note/status/:status", controllerStickNote.findAllByStatus);
+
 routes.get("/v1/public/stick-note/:id", controllerStickNote.findAllById);
 
 routes.post("/v1/public/stick-note", controllerStickNote.create);
