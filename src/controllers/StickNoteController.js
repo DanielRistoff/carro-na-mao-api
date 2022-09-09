@@ -12,13 +12,19 @@ module.exports = {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     try {
-      const stickNotes = await StickNote.findAll({include: [{
-        attributes: ['id', 'description'],
-        model: KindOfService
-      }]});
+      const stickNotes = await StickNote.findAll({
+        include: [
+          {
+            attributes: ["id", "description"],
+            model: KindOfService,
+          },
+        ],
+      });
       return res.json(stickNotes);
     } catch (erro) {
-      return res.status(500).send({error: "Erro findAll (StickNoteControllerController)"});
+      return res
+        .status(500)
+        .send({ error: "Erro findAll (StickNoteControllerController)" });
     }
   },
 
@@ -29,10 +35,20 @@ module.exports = {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     try {
-      const stickNote = await StickNote.findAll({ where: {status: { [Op.like]: `%${req.params.status}` } }});
+      const stickNote = await StickNote.findAll({
+        include: [
+          {
+            attributes: ["id", "description"],
+            model: KindOfService,
+          },
+        ],
+        where: { status: { [Op.like]: `%${req.params.status}` } },
+      });
       return res.json(stickNote);
     } catch (erro) {
-      return res.status(500).send({error: "Erro findAllByStatus (StickNoteControllerController)"});
+      return res.status(500).send({
+        error: "Erro findAllByStatus (StickNoteControllerController)",
+      });
     }
   },
 
@@ -49,7 +65,9 @@ module.exports = {
       });
       return res.json(stickNote);
     } catch (erro) {
-      return res.status(500).send({error: "Erro create (StickNoteControllerController)"});
+      return res
+        .status(500)
+        .send({ error: "Erro create (StickNoteControllerController)" });
     }
   },
 
@@ -64,12 +82,14 @@ module.exports = {
           (stickNote.status = req.body.status),
           (stickNote.created = req.body.created),
           (stickNote.update = validations.validarValores(req.body.update)),
-        await stickNote.save();
+          await stickNote.save();
       }
 
       return res.json(stickNote);
     } catch (erro) {
-      return res.status(500).send({error: "Erro update (StickNoteControllerController)"});
+      return res
+        .status(500)
+        .send({ error: "Erro update (StickNoteControllerController)" });
     }
   },
 
@@ -79,7 +99,9 @@ module.exports = {
 
       return res.json(stickNote);
     } catch (erro) {
-      return res.status(500).send({error: "Erro findAllById (StickNoteControllerController)"});
+      return res
+        .status(500)
+        .send({ error: "Erro findAllById (StickNoteControllerController)" });
     }
   },
 
@@ -89,7 +111,9 @@ module.exports = {
       await stickNote.destroy();
       return res.json(stickNote);
     } catch (erro) {
-      return res.status(500).send({error: "Erro delete (StickNoteControllerController)"});
+      return res
+        .status(500)
+        .send({ error: "Erro delete (StickNoteControllerController)" });
     }
   },
 };

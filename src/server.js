@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const api = express();
-const routes = require('./router');
+const routes = require("./router");
 
 api.use(express.json());
 api.use(routes);
 
-api.listen(4201);
+api.listen(4200);
