@@ -3,6 +3,7 @@ const StickNote = require("../models/StickNote");
 const validations = require("../util/Validations");
 const controllerKindOfService = require("../controllers/KindOfServiceController");
 const KindOfService = require("../models/KindOfService");
+const { logInfo } = require("../util/Logs");
 
 module.exports = {
   async findAll(req, res) {
@@ -12,7 +13,8 @@ module.exports = {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     try {
-      const stickNotes = await StickNote.findAll({
+      logInfo("StickNoteController", "findAll", "", "");
+      const stickNote = await StickNote.findAll({
         include: [
           {
             attributes: ["id", "description"],
@@ -20,15 +22,17 @@ module.exports = {
           },
         ],
       });
-      return res.json(stickNotes);
+      const resp = res.json(res.json(stickNote ? stickNote : {}));
+      logInfo("StickNoteController", "findAll", "Success", stickNote);
+      return resp;
     } catch (erro) {
-      return res
-        .status(500)
-        .send({ error: "Erro findAll (StickNoteControllerController)" });
+      logInfo("StickNoteController", "findAll", "Error", erro.message);
+      return res.status(500).send({ error: "Erro findAll (StickNoteController)" });
     }
   },
 
   async findAllByStatus(req, res) {
+    logInfo("StickNoteController", "findAllByStatus", "params", req.params);
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
       "Access-Control-Allow-Headers",
@@ -44,16 +48,18 @@ module.exports = {
         ],
         where: { status: { [Op.like]: `%${req.params.status}` } },
       });
-      return res.json(stickNote);
+      const resp = res.json(stickNote ? stickNote : {});
+      logInfo("StickNoteController", "findAllByStatus", "Success", stickNote);
+      return resp;
     } catch (erro) {
-      return res.status(500).send({
-        error: "Erro findAllByStatus (StickNoteControllerController)",
-      });
+      logInfo("StickNoteController", "findAllByStatus", "Error", erro.message);
+      return res.status(500).send({error: "Erro findAllByStatus (StickNoteController)",});
     }
   },
 
   async create(req, res) {
     try {
+      logInfo("StickNoteController", "create", "body", req.body);
       const stickNote = await StickNote.create({
         date: req.body.date,
         hour: req.body.hour,
@@ -63,16 +69,18 @@ module.exports = {
         created: req.body.created,
         update: validations.validarValores(req.body.update),
       });
-      return res.json(stickNote);
+      const resp = res.json(stickNote ? stickNote : {});
+      logInfo("StickNoteController", "create", "Success", stickNote);
+      return resp;
     } catch (erro) {
-      return res
-        .status(500)
-        .send({ error: "Erro create (StickNoteControllerController)" });
+      logInfo("StickNoteController", "create", "Error", erro.message);
+      return res.status(500).send({ error: "Erro create (StickNoteController)" });
     }
   },
 
   async update(req, res) {
     try {
+      logInfo("StickNoteController", "update", "body", req.body);
       const stickNote = await StickNote.findByPk(req.params.id);
       if (stickNote) {
         (stickNote.date = req.body.date),
@@ -84,36 +92,39 @@ module.exports = {
           (stickNote.update = validations.validarValores(req.body.update)),
           await stickNote.save();
       }
-
-      return res.json(stickNote);
+      const resp = res.json(stickNote ? stickNote : {});
+      logInfo("StickNoteController", "update", "Success", stickNote);
+      return resp;
     } catch (erro) {
-      return res
-        .status(500)
-        .send({ error: "Erro update (StickNoteControllerController)" });
+      logInfo("StickNoteController", "update", "Error", erro.message);
+      return res.status(500).send({ error: "Erro update (StickNoteControllerController)" });
     }
   },
 
   async findAllById(req, res) {
     try {
+      logInfo("StickNoteController", "findAllById", "params", req.params);
       const stickNote = await StickNote.findByPk(req.params.id);
-
-      return res.json(stickNote);
+      const resp = res.json(stickNote ? stickNote : {});
+      logInfo("StickNoteController", "findAllById", "Success", stickNote);
+      return resp;
     } catch (erro) {
-      return res
-        .status(500)
-        .send({ error: "Erro findAllById (StickNoteControllerController)" });
+      logInfo("StickNoteController", "findAllById", "Error", erro.message);
+      return res.status(500).send({ error: "Erro findAllById (StickNoteController)" });
     }
   },
 
   async delete(req, res) {
     try {
+      logInfo("StickNoteController", "delete", "params", req.params);
       const stickNote = await StickNote.findByPk(req.params.id);
       await stickNote.destroy();
-      return res.json(stickNote);
+      const resp = res.json(stickNote ? stickNote : {});
+      logInfo("StickNoteController", "delete", "Success", stickNote);
+      return resp;
     } catch (erro) {
-      return res
-        .status(500)
-        .send({ error: "Erro delete (StickNoteControllerController)" });
+      logInfo("StickNoteController", "delete", "Error", erro.message);
+      return res.status(500).send({ error: "Erro delete (StickNoteControllerController)" });
     }
   },
 };
