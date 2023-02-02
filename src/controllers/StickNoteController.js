@@ -66,7 +66,7 @@ module.exports = {
         kind_of_service_id: req.body.kindOfService,
         note: validations.validarValores(req.body.note),
         status: req.body.status,
-        created: req.body.created,
+        creation_date: req.body.creation_date,
         update: validations.validarValores(req.body.update),
       });
       const resp = res.json(stickNote ? stickNote : {});
@@ -88,8 +88,8 @@ module.exports = {
           (stickNote.kind_of_service_id = req.body.kindOfService),
           (stickNote.note = validations.validarValores(req.body.note)),
           (stickNote.status = req.body.status),
-          (stickNote.created = req.body.created),
-          (stickNote.update = validations.validarValores(req.body.update)),
+          (stickNote.creation_date = req.body.creation_date),
+          (stickNote.update_date = validations.validarValores(req.body.update_date)),
           await stickNote.save();
       }
       const resp = res.json(stickNote ? stickNote : {});

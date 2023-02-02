@@ -30,11 +30,11 @@ const StickNote = database.define("stick_note",
       type: sequelize.INTEGER,
       allowNull: false,
     },
-    created: {
+    creation_date: {
       type: sequelize.DataTypes.DATE,
       allowNull: false,
     },
-    update: {
+    update_date: {
       type: sequelize.DataTypes.DATE,
       allowNull: true,
     },
