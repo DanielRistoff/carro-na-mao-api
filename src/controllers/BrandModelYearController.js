@@ -43,7 +43,7 @@ module.exports = {
       const brandModelYear = await BrandModelYear.findByPk(req.params.id);
       if (brandModelYear) {
         (brandModelYear.brand_model_id = req.body.brand_model_id),
-          (brandModelYear.year = req.body.year),
+        (brandModelYear.year = req.body.year),
         await brandModelYear.save();
       }
       const resp = res.json(brandModelYear ? brandModelYear : {});

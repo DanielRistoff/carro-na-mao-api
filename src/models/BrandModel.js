@@ -1,7 +1,7 @@
 const sequelize = require("sequelize");
 const database = require("../db");
 
-const BrandModelYear = database.define("brand_model_year", 
+const BrandModel = database.define("brand_model", 
   {
     id: {
       type: sequelize.INTEGER,
@@ -9,7 +9,7 @@ const BrandModelYear = database.define("brand_model_year",
       allowNull: false,
       primaryKey: true,
     },
-    brand_model_id: {
+    brand_id: {
       type: sequelize.INTEGER,
       allowNull: false,
       validator: {
@@ -17,7 +17,11 @@ const BrandModelYear = database.define("brand_model_year",
         isInt: true,
       },
     },
-    year: {
+    description: {
+      type: sequelize.STRING,
+      allowNull: false,
+    },
+    vehicle_type: {
       type: sequelize.STRING,
       allowNull: false,
     },
@@ -29,4 +33,4 @@ const BrandModelYear = database.define("brand_model_year",
   }
 );
 
-module.exports = BrandModelYear;
+module.exports = BrandModel;

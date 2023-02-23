@@ -84,13 +84,13 @@ module.exports = {
       const stickNote = await StickNote.findByPk(req.params.id);
       if (stickNote) {
         (stickNote.date = req.body.date),
-          (stickNote.hour = req.body.hour),
-          (stickNote.kind_of_service_id = req.body.kindOfService),
-          (stickNote.note = validations.validarValores(req.body.note)),
-          (stickNote.status = req.body.status),
-          (stickNote.creation_date = req.body.creation_date),
-          (stickNote.update_date = validations.validarValores(req.body.update_date)),
-          await stickNote.save();
+        (stickNote.hour = req.body.hour),
+        (stickNote.kind_of_service_id = req.body.kindOfService),
+        (stickNote.note = validations.validarValores(req.body.note)),
+        (stickNote.status = req.body.status),
+        (stickNote.creation_date = req.body.creation_date),
+        (stickNote.update_date = validations.validarValores(req.body.update_date)),
+        await stickNote.save();
       }
       const resp = res.json(stickNote ? stickNote : {});
       logInfo("StickNoteController", "update", "Success", stickNote);

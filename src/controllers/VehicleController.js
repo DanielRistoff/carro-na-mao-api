@@ -25,9 +25,12 @@ module.exports = {
       logInfo("VehicleController", "create", "body", req.body);
       const vehicle = await Vehicle.create({
         board: req.body.board,
-        cellphone: req.body.cellphone,
+        current_mileage: req.body.current_mileage,
+        average_monthly_mileage: req.body.average_monthly_mileage,
         vin: req.body.vin,
         brand_model_year_id: req.body.brand_model_year_id,
+        creation_date: req.body.creation_date,
+        update_date: req.body.update_date,
       });
       const resp = res.json(vehicle ? vehicle : {});
       logInfo("VehicleController", "create", "Success", vehicle);
@@ -44,10 +47,13 @@ module.exports = {
       logInfo("VehicleController", "update", "body", req.body);
       const vehicle = await Vehicle.findByPk(req.params.id);
       if (vehicle) {
-          (vehicle.board = req.body.board),
-          (vehicle.cellphone = req.body.cellphone),
-          (vehicle.vin = req.body.vin),
-          (vehicle.brand_model_year_id = req.body.brand_model_year_id),
+        (vehicle.board = req.body.board),
+        (vehicle.current_mileage = req.body.current_mileage),
+        (vehicle.average_monthly_mileage = req.body.average_monthly_mileage),
+        (vehicle.vin = req.body.vin),
+        (vehicle.brand_model_year_id = req.body.brand_model_year_id),
+        (vehicle.creation_date = req.body.creation_date),
+        (vehicle.update_date = req.body.update_date),
         await vehicle.save();
       }
       const resp = res.json(vehicle ? vehicle : {});

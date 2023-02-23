@@ -1,8 +1,7 @@
 const sequelize = require("sequelize");
 const database = require("../db");
-const BrandModelYear = require("./BrandModelYear");
 
-const Vehicle = database.define("vehicle", 
+const PersonInformation = database.define("person_information", 
   {
     id: {
       type: sequelize.INTEGER,
@@ -10,25 +9,33 @@ const Vehicle = database.define("vehicle",
       allowNull: false,
       primaryKey: true,
     },
-    board: {
+    name: {
       type: sequelize.STRING,
       allowNull: true,
     },
-    current_mileage: {
-      type: sequelize.INTEGER,
-      allowNull: true,
-    },
-    average_monthly_mileage: {
-      type: sequelize.INTEGER,
-      allowNull: true,
-    },
-    vin: {
+    phone_number: {
       type: sequelize.STRING,
       allowNull: true,
     },
-    brand_model_year_id: {
-      type: BrandModelYear,
+    login: {
+      type: sequelize.STRING,
       allowNull: true,
+    },
+    password: {
+      type: sequelize.STRING,
+      allowNull: true,
+    },
+    email: {
+      type: sequelize.STRING,
+      allowNull: true,
+    },
+    notify: {
+      type: sequelize.BOOLEAN,
+      allowNull: false,
+    },
+    control_maintenance: {
+      type: sequelize.BOOLEAN,
+      allowNull: false,
     },
     creation_date: {
       type: sequelize.DataTypes.DATE,
@@ -46,4 +53,4 @@ const Vehicle = database.define("vehicle",
   }
 );
 
-module.exports = Vehicle;
+module.exports = PersonInformation;
