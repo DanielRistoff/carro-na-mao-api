@@ -1,7 +1,6 @@
 const { Op } = require("sequelize");
 const StickNote = require("../models/StickNote");
 const validations = require("../util/Validations");
-const controllerKindOfService = require("../controllers/KindOfServiceController");
 const KindOfService = require("../models/KindOfService");
 const { logInfo } = require("../util/Logs");
 
@@ -22,7 +21,7 @@ module.exports = {
           },
         ],
       });
-      const resp = res.json(res.json(stickNote ? stickNote : {}));
+      const resp = res.json(stickNote ? stickNote : {});
       logInfo("StickNoteController", "findAll", "Success", stickNote);
       return resp;
     } catch (erro) {

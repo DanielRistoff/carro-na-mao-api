@@ -16,7 +16,7 @@ module.exports = {
       return resp;
     } catch (erro) {
       logInfo("VehicleController", "findAll", "Error", erro.message);
-      return res.status(500).send({error: "Erro findAll (VehicleController)"});
+      return res.status(500).send({ error: "Erro findAll (VehicleController)" });
     }
   },
 
@@ -27,17 +27,14 @@ module.exports = {
         board: req.body.board,
         current_mileage: req.body.current_mileage,
         average_monthly_mileage: req.body.average_monthly_mileage,
-        vin: req.body.vin,
         brand_model_year_id: req.body.brand_model_year_id,
-        creation_date: req.body.creation_date,
-        update_date: req.body.update_date,
       });
       const resp = res.json(vehicle ? vehicle : {});
       logInfo("VehicleController", "create", "Success", vehicle);
       return resp;
     } catch (erro) {
       logInfo("VehicleController", "create", "Error", erro.message);
-      return res.status(500).send({error: "Erro create (VehicleController)"});
+      return res.status(500).send({ error: "Erro create (VehicleController)" });
     }
   },
 
@@ -48,20 +45,17 @@ module.exports = {
       const vehicle = await Vehicle.findByPk(req.params.id);
       if (vehicle) {
         (vehicle.board = req.body.board),
-        (vehicle.current_mileage = req.body.current_mileage),
-        (vehicle.average_monthly_mileage = req.body.average_monthly_mileage),
-        (vehicle.vin = req.body.vin),
-        (vehicle.brand_model_year_id = req.body.brand_model_year_id),
-        (vehicle.creation_date = req.body.creation_date),
-        (vehicle.update_date = req.body.update_date),
-        await vehicle.save();
+          (vehicle.current_mileage = req.body.current_mileage),
+          (vehicle.average_monthly_mileage = req.body.average_monthly_mileage),
+          (vehicle.brand_model_year_id = req.body.brand_model_year_id),
+          await vehicle.save();
       }
       const resp = res.json(vehicle ? vehicle : {});
       logInfo("VehicleController", "update", "Success", vehicle);
       return resp;
     } catch (erro) {
       logInfo("VehicleController", "update", "Error", erro.message);
-      return res.status(500).send({error: "Erro update (VehicleController)"});
+      return res.status(500).send({ error: "Erro update (VehicleController)" });
     }
   },
 
@@ -74,7 +68,7 @@ module.exports = {
       return resp;
     } catch (erro) {
       logInfo("VehicleController", "findAllById", "Error", erro.message);
-      return res.status(500).send({error: "Erro findAllById (VehicleController)"});
+      return res.status(500).send({ error: "Erro findAllById (VehicleController)" });
     }
   },
 
@@ -88,7 +82,7 @@ module.exports = {
       return resp;
     } catch (erro) {
       logInfo("VehicleController", "delete", "Error", erro.message);
-      return res.status(500).send({error: "Erro delete (VehicleController)"});
+      return res.status(500).send({ error: "Erro delete (VehicleController)" });
     }
   },
 };

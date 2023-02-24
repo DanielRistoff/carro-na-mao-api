@@ -2,7 +2,7 @@ const sequelize = require("sequelize");
 const database = require("../db");
 const BrandModelYear = require("./BrandModelYear");
 
-const Vehicle = database.define("vehicle", 
+const Vehicle = database.define("vehicle",
   {
     id: {
       type: sequelize.INTEGER,
@@ -22,22 +22,10 @@ const Vehicle = database.define("vehicle",
       type: sequelize.INTEGER,
       allowNull: true,
     },
-    vin: {
-      type: sequelize.STRING,
-      allowNull: true,
-    },
     brand_model_year_id: {
       type: BrandModelYear,
       allowNull: true,
-    },
-    creation_date: {
-      type: sequelize.DataTypes.DATE,
-      allowNull: false,
-    },
-    update_date: {
-      type: sequelize.DataTypes.DATE,
-      allowNull: true,
-    },
+    }
   },
   {
     freezeTableName: true,

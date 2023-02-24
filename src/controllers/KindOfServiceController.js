@@ -10,15 +10,13 @@ module.exports = {
     );
     try {
       logInfo("KindOfServiceController", "findAll", "", "");
-      const kindOfService = await KindOfService.findAll({
-        include: { association: 'addresses' }
-      });
+      const kindOfService = await KindOfService.findAll();
       const resp = res.json(kindOfService ? kindOfService : {});
       logInfo("KindOfServiceController", "findAll", "Success", kindOfService);
       return resp;
     } catch (erro) {
       logInfo("KindOfServiceController", "findAll", "Error", erro.message);
-      return res.status(500).send({error: "Erro findAll (KindOfServiceController)"});
+      return res.status(500).send({ error: "Erro findAll (KindOfServiceController)" });
     }
   },
 
@@ -33,7 +31,7 @@ module.exports = {
       return resp;
     } catch (erro) {
       logInfo("KindOfServiceController", "create", "Error", erro);
-      return res.status(500).send({error: "Erro create (KindOfServiceController)"});
+      return res.status(500).send({ error: "Erro create (KindOfServiceController)" });
     }
   },
 
@@ -44,14 +42,14 @@ module.exports = {
       const kindOfService = await KindOfService.findByPk(req.params.id);
       if (kindOfService) {
         (kindOfService.description = req.body.description),
-        await KindOfSkindOfServiceervice.save();
+          await KindOfSkindOfServiceervice.save();
       }
       const resp = res.json(kindOfService ? kindOfService : {});
       logInfo("KindOfServiceController", "update", "Success", kindOfService);
       return resp;
     } catch (erro) {
       logInfo("KindOfServiceController", "update", "Error", erro.message);
-      return res.status(500).send({error: "Erro update (KindOfServiceController)"});
+      return res.status(500).send({ error: "Erro update (KindOfServiceController)" });
     }
   },
 
@@ -64,7 +62,7 @@ module.exports = {
       return resp;
     } catch (erro) {
       logInfo("KindOfServiceController", "findAllById", "Error", erro.message);
-      return res.status(500).send({error: "Erro findAllById (KindOfServiceController)"});
+      return res.status(500).send({ error: "Erro findAllById (KindOfServiceController)" });
     }
   },
 
@@ -78,7 +76,7 @@ module.exports = {
       return resp;
     } catch (erro) {
       logInfo("KindOfServiceController", "delete", "Error", erro.message);
-      return res.status(500).send({error: "Erro delete (KindOfServiceController)"});
+      return res.status(500).send({ error: "Erro delete (KindOfServiceController)" });
     }
   },
 };
