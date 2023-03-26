@@ -119,12 +119,6 @@ module.exports = {
     );
     try {
       const personInformation = await PersonInformation.findAll({
-        include: [
-          {
-            attributes: ["id", "phone_number", "login", "password", "email", "notify", "control_maintenance", "creation_date", "update_date"],
-            model: PersonInformation,
-          },
-        ],
         where: { login: { [Op.like]: `%${req.params.login}` } },
       });
       const resp = res.json(personInformation ? personInformation : {});
