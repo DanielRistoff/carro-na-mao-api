@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const PersonInformation = require("../models/PersonInformation");
 const { logInfo } = require("../util/Logs");
 
