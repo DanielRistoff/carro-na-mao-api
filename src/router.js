@@ -94,6 +94,10 @@ routes.get("/v1/public/person-information", controllerPersonInformation.findAll)
 
 routes.get("/v1/public/person-information/:id", controllerPersonInformation.findAllById);
 
+routes.get("/v1/public/person-information/login", controllerPersonInformation.findAllById);
+
+routes.get("/v1/public/person-information/login/:login", controllerPersonInformation.findAllByLogin);
+
 routes.post("/v1/public/person-information", controllerPersonInformation.create);
 
 routes.put("/v1/public/person-information/:id", controllerPersonInformation.update);
