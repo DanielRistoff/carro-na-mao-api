@@ -1,6 +1,6 @@
 const sequelize = require("sequelize");
 const database = require("../db");
-const shema = "";
+const BrandModelYear = require("./BrandModelYear");
 
 const VehicleStickNote = database.define("vehicle_stick_note",
   {
