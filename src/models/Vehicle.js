@@ -31,12 +31,12 @@ const Vehicle = database.define("vehicle",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  },
-  Vehicle.belongsTo(BrandModelYear, {
-    foreignKey: 'brand_model_year_id',
-    allowNull: false
-  })
-
+  }
 );
+
+Vehicle.belongsTo(BrandModelYear, {
+  foreignKey: 'brand_model_year_id',
+  allowNull: false
+});
 
 module.exports = Vehicle;

@@ -32,16 +32,16 @@ const PersonVehicle = database.define("person_vehicle",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  },
-  PersonVehicle.belongsTo(PersonInformation, {
-    foreignKey: 'person_information_id',
-    allowNull: false
-  }),
-  PersonVehicle.belongsTo(Vehicle, {
-    foreignKey: 'vehicle_id',
-    allowNull: false
-  })
-
+  }
 );
+
+PersonVehicle.belongsTo(PersonInformation, {
+  foreignKey: 'person_information_id',
+  allowNull: false
+});
+PersonVehicle.belongsTo(Vehicle, {
+  foreignKey: 'vehicle_id',
+  allowNull: false
+});
 
 module.exports = PersonVehicle;

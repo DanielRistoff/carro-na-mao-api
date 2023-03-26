@@ -31,11 +31,12 @@ const BrandModel = database.define("brand_model",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  },
-  BrandModel.belongsTo(Brand, {
-    foreignKey: 'brand_id',
-    allowNull: false
-  })
+  }
 );
+
+BrandModel.belongsTo(Brand, {
+  foreignKey: 'brand_id',
+  allowNull: false
+});
 
 module.exports = BrandModel;

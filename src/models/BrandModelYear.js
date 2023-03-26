@@ -27,11 +27,12 @@ const BrandModelYear = database.define("brand_model_year",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  },
-  BrandModelYear.belongsTo(BrandModel, {
-    foreignKey: 'brand_model_id',
-    allowNull: false
-  })
+  }
 );
+
+BrandModelYear.belongsTo(BrandModel, {
+  foreignKey: 'brand_model_id',
+  allowNull: false
+});
 
 module.exports = BrandModelYear;

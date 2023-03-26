@@ -23,11 +23,12 @@ const VehicleStickNote = database.define("vehicle_stick_note",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  },
-  VehicleStickNote.belongsTo(BrandModelYear, {
-    foreignKey: 'stick_note_id',
-    allowNull: false
-  })
+  }
 );
+
+VehicleStickNote.belongsTo(BrandModelYear, {
+  foreignKey: 'stick_note_id',
+  allowNull: false
+});
 
 module.exports = VehicleStickNote;
