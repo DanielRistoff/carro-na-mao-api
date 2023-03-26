@@ -82,20 +82,6 @@ module.exports = {
     }
   },
 
-  async findAllByLogin(req, res) {
-    try {
-      logInfo("PersonInformationController", "findAllByLogin", "params", req.params);
-      const personInformation = await PersonInformation.findAllByLogin(req.params.id);
-      const resp = res.json(personInformation ? personInformation : {});
-      logInfo("PersonInformationController", "findAllByLogin", "Success", personInformation);
-      return resp;
-    } catch (erro) {
-      logInfo("PersonInformationController", "findAllByLogin", "Error", erro.message);
-      return res.status(500).send({ error: "Erro findAllByLogin (PersonInformationController)" });
-    }
-  },
-
-
   async findAllByLoginAndPassword(req, res) {
     try {
       logInfo("PersonInformationController", "findAllByLoginAndPassword", "params", req.params);
@@ -138,7 +124,7 @@ module.exports = {
             model: PersonInformation,
           },
         ],
-        where: { status: { [Op.like]: `%${req.params.login}` } },
+        where: { login: { [Op.like]: `%${req.params.login}` } },
       });
       const resp = res.json(personInformation ? personInformation : {});
       logInfo("PersonInformationController", "findAllByLogin", "Success", personInformation);
