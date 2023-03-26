@@ -1,7 +1,8 @@
 const sequelize = require("sequelize");
 const database = require("../db");
+const BrandModel = require("./BrandModel");
 
-const BrandModelYear = database.define("brand_model_year", 
+const BrandModelYear = database.define("brand_model_year",
   {
     id: {
       type: sequelize.INTEGER,
@@ -26,7 +27,11 @@ const BrandModelYear = database.define("brand_model_year",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  }
+  },
+  BrandModelYear.belongsTo(BrandModel, {
+    foreignKey: 'brand_model_id',
+    allowNull: false
+  })
 );
 
 module.exports = BrandModelYear;

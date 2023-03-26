@@ -1,7 +1,8 @@
 const sequelize = require("sequelize");
 const database = require("../db");
+const Brand = require("./Brand");
 
-const BrandModel = database.define("brand_model", 
+const BrandModel = database.define("brand_model",
   {
     id: {
       type: sequelize.INTEGER,
@@ -30,7 +31,11 @@ const BrandModel = database.define("brand_model",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  }
+  },
+  BrandModel.belongsTo(Brand, {
+    foreignKey: 'brand_id',
+    allowNull: false
+  })
 );
 
 module.exports = BrandModel;

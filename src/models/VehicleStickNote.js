@@ -2,7 +2,7 @@ const sequelize = require("sequelize");
 const database = require("../db");
 const shema = "";
 
-const VehicleStickNote = database.define("vehicle_stick_note", 
+const VehicleStickNote = database.define("vehicle_stick_note",
   {
     id: {
       type: sequelize.INTEGER,
@@ -23,7 +23,11 @@ const VehicleStickNote = database.define("vehicle_stick_note",
     freezeTableName: true,
     createdAt: false,
     updatedAt: false,
-  }
+  },
+  VehicleStickNote.belongsTo(BrandModelYear, {
+    foreignKey: 'stick_note_id',
+    allowNull: false
+  })
 );
 
 module.exports = VehicleStickNote;
